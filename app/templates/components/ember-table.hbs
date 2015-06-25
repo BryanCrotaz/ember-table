@@ -1,9 +1,13 @@
 {{#if hasHeader}}
   {{view "header-table-container"}}
+{{!xheader-table-container}}
 {{/if}}
 {{view "body-table-container"}}
 {{#if hasFooter}}
   {{view "footer-table-container"}}
 {{/if}}
-{{view "scroll-container"}}
-{{view "column-sortable-indicator"}}
+{{!view "scroll-container"}}
+{{xscroll-container}}
+{{!view "column-sortable-indicator"}}
+<!-- TODO: check why column-sortable-indicator is not indicating anything-->
+{{xcolumn-sortable-indicator}}

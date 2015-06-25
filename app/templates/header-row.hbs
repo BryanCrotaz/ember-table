@@ -1,5 +1,10 @@
-{{view "multi-item-collection"
-  contentBinding="view.content"
+{{!view "multi-item-collection"
+  content=view.content
   itemViewClassField="headerCellViewClass"
-  widthBinding="controller._tableColumnsWidth"
+  width=controller._tableColumnsWidth
+}}
+{{xmulti-item-collection
+  content=view.content
+  itemViewClassField="headerCellViewClass"
+  width=controller._tableColumnsWidth
 }}

@@ -1,6 +1,12 @@
-{{view "multi-item-collection"
-  rowBinding="view.row"
-  contentBinding="view.columns"
+{{!view "multi-item-collection"
+  row=view.row
+  content=view.columns
   itemViewClassField="tableCellViewClass"
-  widthBinding="controller._tableColumnsWidth"
+  width=controller._tableColumnsWidth
+}}
+{{xmulti-item-collection
+row=view.row
+content=view.columns
+itemViewClassField="tableCellViewClass"
+width=controller._tableColumnsWidth
 }}
