@@ -11,7 +11,9 @@ export default Ember.Mixin.create({
   tableComponent: null,
 
   init: function() {
+
     if (!this.get('tableComponent')) {
+      console.log(this.nearestWithProperty('isEmberTable'),Ember.$('ember532'));
       this.set('tableComponent', this.nearestWithProperty('isEmberTable'));
     }
     return this._super();

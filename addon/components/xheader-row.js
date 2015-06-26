@@ -12,6 +12,10 @@ export default Ember.Component.extend(
     width: Ember.computed.alias('tableComponent._rowWidth'),
     scrollLeft: Ember.computed.alias('tableComponent._tableScrollLeft'),
 
+    init:function(){
+      console.log("hi");
+    },
+
     _tableColumnsWidth: Ember.computed(function(){
       //TODO: make sure this is the right way of getting things from the controller
       return this.get('controller._tableColumnsWidth') || 100;
