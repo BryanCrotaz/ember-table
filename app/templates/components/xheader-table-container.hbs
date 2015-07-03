@@ -1,15 +1,27 @@
 <div class="ember-table-table-fixed-wrapper">
-  {{#if controller.numFixedColumns}}
+  {{#if numFixedColumns}}
     {{xheader-block classNames="ember-table-left-table-block"
     columns=fixedColumns
     width=_fixedBlockWidth
     height=headerHeight
+    _rowWidth=_rowWidth
+    _tableScrollLeft=_tableScrollLeft
+    _tableColumnsWidth=_tableColumnsWidth
+    enableColumnReorder=enableColumnReorder
+    _isShowingSortableIndicator=_isShowingSortableIndicator
+    _sortableIndicatorLeft=_sortableIndicatorLeft
     }}
   {{/if}}
   {{xheader-block classNames="ember-table-right-table-block"
   columns=tableColumns
   scrollLeft=_tableScrollLeft
+  _tableScrollLeft=_tableScrollLeft
   width=_tableBlockWidth
   height=headerHeight
+  _rowWidth=_rowWidth
+  _tableColumnsWidth=_tableColumnsWidth
+  enableColumnReorder=enableColumnReorder
+  _isShowingSortableIndicator=_isShowingSortableIndicator
+  _sortableIndicatorLeft=_sortableIndicatorLeft
   }}
 </div>

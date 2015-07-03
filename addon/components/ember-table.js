@@ -3,6 +3,7 @@ import StyleBindingsMixin from 'ember-table/mixins/style-bindings';
 import ResizeHandlerMixin from 'ember-table/mixins/resize-handler';
 import RowArrayController from 'ember-table/controllers/row-array';
 import Row from 'ember-table/controllers/row';
+import RegisterTableComponentMixin from 'ember-table/mixins/register-table-component';
 
 export default Ember.Component.extend(
 StyleBindingsMixin, ResizeHandlerMixin, {
@@ -12,7 +13,24 @@ StyleBindingsMixin, ResizeHandlerMixin, {
   // ---------------------------------------------------------------------------
   // API - Inputs
   // ---------------------------------------------------------------------------
-
+  headerProperties: Ember.computed(function(){
+    var ob = {};
+    ob['_headerHeight'] = this.get('_headerHeight');
+    ob['_tableContainerWidth'] = this.get('_tableContainerWidth');
+    ob['fixedColumns'] = this.get('fixedColumns');
+    ob['tableColumns'] = this.get('tableColumns');
+    ob['_tableScrollLeft'] = this.get('_tableScrollLeft');
+    ob['_tableBlockWidth'] = this.get('_tableBlockWidth');
+    ob['_fixedBlockWidth'] = this.get('_fixedBlockWidth');
+    ob['numFixedColumns'] = this.get('numFixedColumns');
+    ob['tableRowViewClass'] = this.get('tableRowViewClass');
+    ob['_rowWidth'] = this.get('_rowWidth');
+    ob['_tableColumnsWidth'] = this.get('_tableColumnsWidth');
+    ob['enableColumnReorder'] = this.get('enableColumnReorder');
+    ob['_isShowingSortableIndicator'] = this.get('_isShowingSortableIndicator');
+    ob['_sortableIndicatorLeft'] = this.get('_sortableIndicatorLeft');
+    return ob;
+  }),
   // Values which are bound to the table's style attr. See
   // `Ember.StyleBindingsMixin` documentation for more details.
   styleBindings: ['height'],
@@ -137,7 +155,7 @@ StyleBindingsMixin, ResizeHandlerMixin, {
           value = resolvedContent;
         });
 
-        // returns [] if the promise doesn't resolve immediately, or 
+        // returns [] if the promise doesn't resolve immediately, or
         // the resolved value if it's ready
         return value;
       }
@@ -607,6 +625,9 @@ StyleBindingsMixin, ResizeHandlerMixin, {
   // TODO(azirbel): Document
   actions: {
     addColumn: Ember.K,
-    sortByColumn: Ember.K
+    sortByColumn: Ember.K,
+    toController:function(target){
+      target = this;
+    }
   }
 });

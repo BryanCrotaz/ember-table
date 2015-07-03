@@ -13,7 +13,7 @@ export default Ember.Mixin.create({
   init: function() {
 
     if (!this.get('tableComponent')) {
-      console.log(this.nearestWithProperty('isEmberTable'),Ember.$('ember532'));
+      //console.log('register-table-component: ',this.nearestWithProperty('isEmberTable'),this.get('controller'));
       this.set('tableComponent', this.nearestWithProperty('isEmberTable'));
     }
     return this._super();

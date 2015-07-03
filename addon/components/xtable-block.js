@@ -4,10 +4,10 @@ import RegisterTableComponentMixin from 'ember-table/mixins/register-table-compo
 
 // TODO: This should be a mixin
 export default Ember.Component.extend(
-  StyleBindingsMixin, RegisterTableComponentMixin, {
+  StyleBindingsMixin, /*RegisterTableComponentMixin,*/ {
     classNames: ['ember-table-table-block'],
     styleBindings: ['width', 'height'],
-    itemViewClass: Ember.computed.alias('tableComponent.tableRowViewClass'),
+    itemViewClass: Ember.computed.alias('tableRowViewClass'),
     columns: null,
     content: null,
     scrollLeft: null,
@@ -17,6 +17,6 @@ export default Ember.Component.extend(
     }, 'scrollLeft'),
 
     height: Ember.computed(function() {
-      return this.get('tableComponent._headerHeight');
-    }).property('tableComponent._headerHeight')
+      return this.get('_headerHeight');
+    }).property('_headerHeight')
   });

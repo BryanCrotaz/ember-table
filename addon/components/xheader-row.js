@@ -5,20 +5,16 @@ import RegisterTableComponentMixin from 'ember-table/mixins/register-table-compo
 // We hacked this. There is an inconsistency at the level in which we are
 // handling scroll event...
 export default Ember.Component.extend(
-  StyleBindingsMixin, RegisterTableComponentMixin, {
+  StyleBindingsMixin, /*RegisterTableComponentMixin,*/ {
     classNames: ['ember-table-table-row', 'ember-table-header-row'],
     styleBindings: ['width'],
     columns: Ember.computed.alias('content'),
-    width: Ember.computed.alias('tableComponent._rowWidth'),
-    scrollLeft: Ember.computed.alias('tableComponent._tableScrollLeft'),
-
-    init:function(){
-      console.log("hi");
-    },
+    width: Ember.computed.alias('_rowWidth'),
+    scrollLeft: Ember.computed.alias('_tableScrollLeft'),
 
     _tableColumnsWidth: Ember.computed(function(){
       //TODO: make sure this is the right way of getting things from the controller
-      return this.get('controller._tableColumnsWidth') || 100;
+      return this.get('_tableColumnsWidth') || 100;
     }),
     // Options for jQuery UI sortable
     sortableOption: Ember.computed(function() {
@@ -44,13 +40,13 @@ export default Ember.Component.extend(
 
     didInsertElement: function() {
       this._super();
-      if (this.get('tableComponent.enableColumnReorder')) {
+      if (this.get('enableColumnReorder')) {
         this.$('> div').sortable(this.get('sortableOption'));
       }
     },
 
     willDestroyElement: function() {
-      if (this.get('tableComponent.enableColumnReorder')) {
+      if (this.get('enableColumnReorder')) {
         // TODO(azirbel): Get rid of this check, as in onColumnSortDone?
         var $divs = this.$('> div');
         if ($divs) {
@@ -66,14 +62,14 @@ export default Ember.Component.extend(
     },
 
     onColumnSortStop: function() {
-      this.set('tableComponent._isShowingSortableIndicator', false);
+      this.set('_isShowingSortableIndicator', false);
     },
 
     onColumnSortChange: function() {
       var left = this.$('.ui-state-highlight').offset().left -
         this.$().closest('.ember-table-tables-container').offset().left;
-      this.set('tableComponent._isShowingSortableIndicator', true);
-      this.set('tableComponent._sortableIndicatorLeft', left);
+      this.set('_isShowingSortableIndicator', true);
+      this.set('_sortableIndicatorLeft', left);
     },
 
     onColumnSortDone: function(event, ui) {
@@ -81,8 +77,8 @@ export default Ember.Component.extend(
       this.$('> div').sortable('cancel');
       var view = Ember.View.views[ui.item.attr('id')];
       var column = view.get('column');
-      this.get('tableComponent').onColumnSort(column, newIndex);
-      this.set('tableComponent._isShowingSortableIndicator', false);
+      //this.get('tableComponent').onColumnSort(column, newIndex);
+      this.set('_isShowingSortableIndicator', false);
     }
   });
 

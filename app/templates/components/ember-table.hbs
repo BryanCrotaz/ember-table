@@ -1,6 +1,23 @@
 {{#if hasHeader}}
   {{!view "header-table-container"}}
-{{xheader-table-container}}
+{{xheader-table-container
+headerProperties=headerProperties
+  height = _headerHeight
+  width = _tableContainerWidth
+  fixedColumns = fixedColumns
+  tableColumns = tableColumns
+  _tableScrollLeft=_tableScrollLeft
+  _tableBlockWidth=_tableBlockWidth
+  _fixedBlockWidth=_fixedBlockWidth
+  headerHeight=_headerHeight
+  numFixedColumns=numFixedColumns
+  tableRowViewClass=tableRowViewClass
+  _rowWidth=_rowWidth
+  _tableColumnsWidth=_tableColumnsWidth
+  enableColumnReorder=enableColumnReorder
+  _isShowingSortableIndicator=_isShowingSortableIndicator
+  _sortableIndicatorLeft=_sortableIndicatorLeft
+}}
 {{/if}}
 {{view "body-table-container"}}
 {{#if hasFooter}}
